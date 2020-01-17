@@ -11,7 +11,7 @@ public class RunsCsvPojo {
     public String player;
 
     @CsvBindByName(column ="Mat", required = true)
-    public String mat;
+    public int mat;
 
     @CsvBindByName(column = "Inns", required = true)
     public int inns;
@@ -23,16 +23,16 @@ public class RunsCsvPojo {
     public int runs;
 
     @CsvBindByName(column = "HS", required = true)
-    public String hs;
+    public int hs;
 
     @CsvBindByName(column = "Avg", required = true)
-    public String Avg;
+    public double Avg;
 
     @CsvBindByName(column = "BF", required = true)
-    public int bf;
+    public double bf;
 
     @CsvBindByName(column = "SR", required = true)
-    public Double sr;
+    public double sr;
 
     @CsvBindByName(column = "100", required = true)
     public int century;
@@ -45,6 +45,11 @@ public class RunsCsvPojo {
 
     @CsvBindByName(column = "6s", required = true)
     public int six_s;
+
+
+    public double getAvg() {
+        return Avg;
+    }
 
     @Override
     public String toString() {
@@ -65,4 +70,5 @@ public class RunsCsvPojo {
                 ", six_s=" + six_s +
                 '}';
     }
+
 }

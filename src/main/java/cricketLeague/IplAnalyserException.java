@@ -4,7 +4,7 @@ public class IplAnalyserException extends Throwable {
 
 
     enum ExceptionType{
-        FILE_LOAD_PROBLEM;
+        FILE_LOAD_PROBLEM,NO_CENSUS_DATA;
     }
 
     ExceptionType type;

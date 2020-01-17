@@ -75,4 +75,18 @@ public class IPLAnalyzer {
     }
 
 
+    public List<RunsCsvPojo> getreverseSortBasedOn4sAnd6sAndStrikeRate() throws IplAnalyserException {
+        if(runsCsvlist == null || runsCsvlist.size()==0)
+        {
+            throw new IplAnalyserException("NO CENSUS DATA",
+                    IplAnalyserException.ExceptionType.NO_CENSUS_DATA);
+        }
+
+        Comparator<RunsCsvPojo> codecomparator=(p1,p2)-> new Integer((p1.four_s*4+p1.six_s*6) < (p2.four_s*4+p2.six_s*6)?1:-1);
+        codecomparator = codecomparator.thenComparing((data1,data2) -> data1.sr - data2.sr < 0 ? -1 : 1);
+
+        Collections.sort(runsCsvlist,codecomparator);
+        System.out.println(runsCsvlist);
+        return runsCsvlist;
+    }
 }

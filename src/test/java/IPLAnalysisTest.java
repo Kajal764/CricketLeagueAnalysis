@@ -52,6 +52,14 @@ public class IPLAnalysisTest {
         Assert.assertEquals("Andre Russell",CsvData.get(0).player);
     }
 
+    @Test
+    public void whenGivenIpl2019FactsSheetMostRuns_ShouldReturnCorrectTop4sAnd6sWithStrikeRate() throws IplAnalyserException {
+        IPLAnalyzer iplAnalyzer=new IPLAnalyzer();
+        int numOfRecords = iplAnalyzer.loadMostRunSheetData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
+        List<RunsCsvPojo> CsvData = iplAnalyzer.getreverseSortBasedOn4sAnd6sAndStrikeRate();
+      Assert.assertEquals("Andre Russell",CsvData.get(0).player);
+    }
+
 
 
 

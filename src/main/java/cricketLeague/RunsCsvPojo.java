@@ -51,6 +51,10 @@ public class RunsCsvPojo {
         return Avg;
     }
 
+    public double getSr() {
+        return sr;
+    }
+
     @Override
     public String toString() {
         return "RunsCsvPojo{" +

@@ -19,7 +19,7 @@ public class IPLAnalysisTest {
     }
 
     @Test
-    public void whenGivenIpl2019FactsSheetMostRuns_ShouldReturnCorrectTopRecords() throws IplAnalyserException {
+    public void whenGivenIpl2019FactsSheetMostRuns_ShouldReturnCorrectTopAverage() throws IplAnalyserException {
         IPLAnalyzer iplAnalyzer=new IPLAnalyzer();
         int numOfRecords = iplAnalyzer.loadMostRunSheetData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
         List<RunsCsvPojo> CsvData = iplAnalyzer.reverseSortBasedOnAvg();
@@ -35,6 +35,15 @@ public class IPLAnalysisTest {
             Assert.assertEquals(83.2, CsvData.get(0).Avg, 0);
         } catch (IplAnalyserException e) { }
     }
+
+    @Test
+    public void whenGivenIpl2019FactsSheetMostRuns_ShouldReturnCorrectTopStrickingRate() throws IplAnalyserException {
+        IPLAnalyzer iplAnalyzer=new IPLAnalyzer();
+        int numOfRecords = iplAnalyzer.loadMostRunSheetData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
+        List<RunsCsvPojo> CsvData = iplAnalyzer.reverseSortBasedOnStrickingRate();
+        Assert.assertEquals(333.33,CsvData.get(0).sr,0);
+    }
+
 
 
 

@@ -47,4 +47,18 @@ public class IPLAnalyzer {
         return sortedList;
 
     }
+
+    public List<RunsCsvPojo> reverseSortBasedOnStrickingRate() throws IplAnalyserException {
+        if(runsCsvlist == null || runsCsvlist.size()==0)
+        {
+            throw new IplAnalyserException("NO CENSUS DATA",
+                    IplAnalyserException.ExceptionType.NO_CENSUS_DATA);
+        }
+        List <RunsCsvPojo> sortedList = runsCsvlist.stream().sorted(Comparator.comparing(RunsCsvPojo::getSr).reversed()).collect(Collectors.toList());
+        System.out.println(sortedList);
+        return sortedList;
+
+    }
+
+
 }

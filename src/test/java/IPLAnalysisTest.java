@@ -15,7 +15,7 @@ public class IPLAnalysisTest {
     public void whenGivenIpl2019FactsSheetMostRuns_ShouldLoadCorrectRecord() throws IplAnalyserException {
         IPLAnalyzer iplAnalyzer=new IPLAnalyzer();
         int numOfRecords = iplAnalyzer.loadMostRunSheetData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
-        Assert.assertEquals(101,numOfRecords);
+        Assert.assertEquals(100,numOfRecords);
     }
 
     @Test

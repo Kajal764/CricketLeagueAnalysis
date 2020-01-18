@@ -43,8 +43,10 @@ public class IPLAnalyzer {
             throw new IplAnalyserException("NO CENSUS DATA",
                     IplAnalyserException.ExceptionType.NO_CENSUS_DATA);
         }
+        List sortedList=runsCsvlist.stream()
+                .sorted((data1,data2)->(int)(data2.Avg-data1.Avg))
+                .collect(Collectors.toList());
 
-        List <RunsCsvPojo> sortedList = runsCsvlist.stream().sorted(Comparator.comparing(RunsCsvPojo::getAvg).reversed()).collect(Collectors.toList());
         return sortedList;
 
     }
@@ -55,7 +57,9 @@ public class IPLAnalyzer {
             throw new IplAnalyserException("NO CENSUS DATA",
                     IplAnalyserException.ExceptionType.NO_CENSUS_DATA);
         }
-        List <RunsCsvPojo> sortedList = runsCsvlist.stream().sorted(Comparator.comparing(RunsCsvPojo::getSr).reversed()).collect(Collectors.toList());
+        List sortedList=runsCsvlist.stream()
+                .sorted((data1,data2)->(int)(data2.sr-data1.sr))
+                .collect(Collectors.toList());
         System.out.println(sortedList);
         return sortedList;
 

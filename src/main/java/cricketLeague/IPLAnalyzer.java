@@ -30,6 +30,7 @@ public class IPLAnalyzer {
         ArrayList c= (ArrayList) runsCsvlist.stream()
                 .sorted(comparator)
                 .collect(Collectors.toList());
+
         return c;
     }
 

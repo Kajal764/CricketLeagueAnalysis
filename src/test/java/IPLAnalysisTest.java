@@ -61,6 +61,14 @@ public class IPLAnalysisTest {
     }
 
 
+    @Test
+    public void whenGivenIpl2019FactsSheetMostRuns_ShouldReturnCorrectTopAvgWithStrikeRate() throws IplAnalyserException {
+        IPLAnalyzer iplAnalyzer=new IPLAnalyzer();
+        iplAnalyzer.loadCSVData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
+        List<BatsmanCsv> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.AVG_SR);
+        Assert.assertEquals("MS Dhoni",CsvData.get(0).player);
+    }
+
 
 
 }

@@ -1,14 +1,6 @@
 package cricketLeague;
 
-import com.brideglabz.CSVBuilderException;
-import com.brideglabz.CSVBuilderFactory;
-import com.brideglabz.ICSVBuilder;
 
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.NoSuchFileException;
-import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -27,11 +19,10 @@ public class IPLAnalyzer {
 
     public List<BatsmanCsv> getTopRecords(Sort.sortFields sortFields) {
         Comparator<BatsmanCsv> comparator=new Sort().getField(sortFields);
-        ArrayList c= (ArrayList) runsCsvlist.stream()
+        ArrayList sortedlist= (ArrayList) runsCsvlist.stream()
                 .sorted(comparator)
                 .collect(Collectors.toList());
-
-        return c;
+        return sortedlist;
     }
 
 

@@ -69,6 +69,14 @@ public class IPLAnalysisTest {
         Assert.assertEquals("MS Dhoni",CsvData.get(0).player);
     }
 
+    @Test
+    public void whenGivenIpl2019FactsSheetMostRuns_ShouldReturnCorrectTopRunsWithAvg() throws IplAnalyserException {
+        IPLAnalyzer iplAnalyzer=new IPLAnalyzer();
+        iplAnalyzer.loadCSVData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
+        List<BatsmanCsv> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.RUN_AVG);
+        Assert.assertEquals("David Warner",CsvData.get(0).player);
+    }
+
 
 
 }

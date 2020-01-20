@@ -2,7 +2,7 @@ package cricketLeague;
 
 import com.opencsv.bean.CsvBindByName;
 
-public class RunsCsvPojo {
+public class BatsmanCsv {
 
     @CsvBindByName(column = "POS", required = true)
     public int pos;
@@ -47,17 +47,9 @@ public class RunsCsvPojo {
     public int six_s;
 
 
-    public double getAvg() {
-        return Avg;
-    }
-
-    public double getSr() {
-        return sr;
-    }
-
     @Override
     public String toString() {
-        return "RunsCsvPojo{" +
+        return "BatsmanCsv{" +
                 "pos=" + pos +
                 ", player='" + player + '\'' +
                 ", mat='" + mat + '\'' +

@@ -1,6 +1,7 @@
+import cricketLeague.BatsmanCsv;
 import cricketLeague.IPLAnalyzer;
 import cricketLeague.IplAnalyserException;
-import cricketLeague.RunsCsvPojo;
+import cricketLeague.Sort;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -17,46 +18,46 @@ public class IPLAnalysisTest {
         int numOfRecords = iplAnalyzer.loadMostRunSheetData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
         Assert.assertEquals(100,numOfRecords);
     }
-
-    @Test
-    public void whenGivenIpl2019FactsSheetMostRuns_ShouldReturnCorrectTopAverage() throws IplAnalyserException {
-        IPLAnalyzer iplAnalyzer=new IPLAnalyzer();
-        int numOfRecords = iplAnalyzer.loadMostRunSheetData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
-        List<RunsCsvPojo> CsvData = iplAnalyzer.reverseSortBasedOnAvg();
-        Assert.assertEquals(83.2,CsvData.get(0).Avg,0);
-    }
-
     @Test
     public void whenGivenWrongExtension_Ipl2019FactsSheetMostRuns_ShouldRet() throws IplAnalyserException {
         try {
             IPLAnalyzer iplAnalyzer = new IPLAnalyzer();
             int numOfRecords = iplAnalyzer.loadMostRunSheetData(WRONG_FACTS_SHEET_MOST_RUNS_CSV_PATH);
-            List<RunsCsvPojo> CsvData = iplAnalyzer.reverseSortBasedOnAvg();
-            Assert.assertEquals(83.2, CsvData.get(0).Avg, 0);
+            Assert.assertEquals(100,numOfRecords);
+
         } catch (IplAnalyserException e) { }
+    }
+
+    @Test
+    public void whenGivenIpl2019FactsSheetMostRuns_ShouldReturnCorrectTopAverage() throws IplAnalyserException {
+        IPLAnalyzer iplAnalyzer=new IPLAnalyzer();
+        iplAnalyzer.loadMostRunSheetData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
+        List<BatsmanCsv> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.AVG_BATTING_RATE);
+        System.out.println(CsvData.get(0));
+        Assert.assertEquals(83.2,CsvData.get(0).Avg,0);
     }
 
     @Test
     public void whenGivenIpl2019FactsSheetMostRuns_ShouldReturnCorrectTopStrickingRate() throws IplAnalyserException {
         IPLAnalyzer iplAnalyzer=new IPLAnalyzer();
-        int numOfRecords = iplAnalyzer.loadMostRunSheetData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
-        List<RunsCsvPojo> CsvData = iplAnalyzer.reverseSortBasedOnStrickingRate();
-        Assert.assertEquals(333.33,CsvData.get(0).sr,0);
+        iplAnalyzer.loadMostRunSheetData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
+        List<BatsmanCsv> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.STRIKING_RATE);
+       Assert.assertEquals(333.33,CsvData.get(0).sr,0);
     }
 
     @Test
     public void whenGivenIpl2019FactsSheetMostRuns_ShouldReturnCorrectTop4sAnd6s() throws IplAnalyserException {
         IPLAnalyzer iplAnalyzer=new IPLAnalyzer();
-        int numOfRecords = iplAnalyzer.loadMostRunSheetData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
-        List<RunsCsvPojo> CsvData = iplAnalyzer.reverseSortBasedOn4sAnd6s();
+       iplAnalyzer.loadMostRunSheetData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
+        List<BatsmanCsv> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.S4_S6);
         Assert.assertEquals("Andre Russell",CsvData.get(0).player);
     }
 
     @Test
     public void whenGivenIpl2019FactsSheetMostRuns_ShouldReturnCorrectTop4sAnd6sWithStrikeRate() throws IplAnalyserException {
         IPLAnalyzer iplAnalyzer=new IPLAnalyzer();
-        int numOfRecords = iplAnalyzer.loadMostRunSheetData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
-        List<RunsCsvPojo> CsvData = iplAnalyzer.getreverseSortBasedOn4sAnd6sAndStrikeRate();
+        iplAnalyzer.loadMostRunSheetData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
+        List<BatsmanCsv> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.S4_S6_SR);
       Assert.assertEquals("Andre Russell",CsvData.get(0).player);
     }
 

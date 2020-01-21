@@ -2,7 +2,7 @@ package cricketLeague;
 
 import com.opencsv.bean.CsvBindByName;
 
-public class BatsmanCsv {
+public class Batsman {
 
     @CsvBindByName(column = "POS", required = true)
     public int pos;
@@ -49,7 +49,7 @@ public class BatsmanCsv {
 
     @Override
     public String toString() {
-        return "BatsmanCsv{" +
+        return "Batsman{" +
                 "pos=" + pos +
                 ", player='" + player + '\'' +
                 ", mat='" + mat + '\'' +

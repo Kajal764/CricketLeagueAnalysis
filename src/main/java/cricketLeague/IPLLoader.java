@@ -12,18 +12,22 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class IPLLoader {
 
 
 
-    public static List loadMostRunSheetData(String csvFilePath) throws IplAnalyserException {
-        List<Batsman> runsCsvlist = new ArrayList<>();
+    public static  List<CricketDAO> loadMostRunSheetData(String csvFilePath) throws IplAnalyserException {
+        List<CricketDAO> runsCsvlist = new ArrayList<>();
 
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath))) {
             ICSVBuilder icsvBuilder = CSVBuilderFactory.createCSVBuilder();
-            List csvFileList = icsvBuilder.getCSVFileList(reader, Batsman.class);
-            csvFileList.stream().filter(CensusData -> runsCsvlist.add((Batsman) CensusData)).collect(Collectors.toList());
+            List csvFileList1 = icsvBuilder.getCSVFileList(reader, Batsman.class);
+            StreamSupport.stream(csvFileList1.spliterator(),false)
+                    .map(Batsman.class::cast)
+                    .forEach(cricketCSV -> runsCsvlist.add(new CricketDAO((Batsman) cricketCSV)));
+
             return runsCsvlist;
         } catch (NoSuchFileException e1) {
             throw new IplAnalyserException(e1.getMessage(),
@@ -38,12 +42,13 @@ public class IPLLoader {
 
 
     public static List loadMostWicketsSheetData(String csvFilePath) throws IplAnalyserException {
-        List<Bowler> runsCsvlist = new ArrayList<>();
-
+        List<CricketDAO> runsCsvlist = new ArrayList<>();
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath))) {
             ICSVBuilder icsvBuilder = CSVBuilderFactory.createCSVBuilder();
             List csvFileList = icsvBuilder.getCSVFileList(reader, Bowler.class);
-            csvFileList.stream().filter(CensusData -> runsCsvlist.add((Bowler) CensusData)).collect(Collectors.toList());
+            StreamSupport.stream(csvFileList.spliterator(),false)
+                    .map(Bowler.class::cast)
+                    .forEach(cricketCSV -> runsCsvlist.add(new CricketDAO((Bowler) cricketCSV)));
             return runsCsvlist;
         } catch (NoSuchFileException e1) {
             throw new IplAnalyserException(e1.getMessage(),

@@ -11,9 +11,9 @@ public class Sort {
         S4_S6,
         S4_S6_SR,
         AVG_SR,
-        RUN_AVG
+        RUN_AVG,
+        ECONOMY,
     }
-
 
 
     public Comparator getRunField(Sort.sortFields sortField)
@@ -38,19 +38,12 @@ public class Sort {
         codecomparator2.thenComparing((data1,data2) -> (int) (data2.avg-data1.avg));
         compareField.put(sortFields.RUN_AVG,codecomparator2);
 
+        compareField.put(sortFields.ECONOMY,(data1,data2)-> (int) (data1.econ<data2.econ?1:-1));
+
         Comparator comparator=compareField.get(sortField);
         return comparator;
 
     }
 
-//    public Comparator getWktField(Sort.sortFields sortField)
-//    {
-//        HashMap<sortFields,Comparator<Bowler>> compareWicketField=new HashMap<>();
-//        compareWicketField.put(sortFields.AVG_BATTING_RATE,(data1,data2)-> (int) (data2.avg-data1.avg));
-//
-//        Comparator comparator=compareWicketField.get(sortField);
-//        return comparator;
-//
-//    }
 
 }

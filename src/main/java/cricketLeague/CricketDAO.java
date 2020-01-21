@@ -2,6 +2,7 @@ package cricketLeague;
 
 public class CricketDAO {
 
+    public double econ;
     public String player;
     public int five_w;
     public int four_w;
@@ -28,13 +29,15 @@ public class CricketDAO {
         four_w=bowler.four_wickets;
         five_w=bowler.five_wickets;
         runs=bowler.runs;
+        econ=bowler.econ;
 
     }
 
     @Override
     public String toString() {
         return "CricketDAO{" +
-                "player='" + player + '\'' +
+                "econ=" + econ +
+                ", player='" + player + '\'' +
                 ", five_w=" + five_w +
                 ", four_w=" + four_w +
                 ", sr=" + sr +

@@ -113,5 +113,13 @@ public void whenGivenIpl2019FactsSheetMostWkt_ShouldLoadCorrectRecord() throws I
         Assert.assertEquals(120.0,CsvData.get(0).sr,0);
     }
 
+    @Test
+    public void whenGivenIpl2019FactsSheetMostWkts_ShouldReturnCorrectTopEconomy_Rate() throws IplAnalyserException {
+        IPLAnalyzer iplAnalyzer=new IPLAnalyzer();
+        iplAnalyzer.loadWktData(FACTS_SHEET_MOST_WKT_CSV_PATH);
+        List<CricketDAO> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.ECONOMY);
+        Assert.assertEquals(13.5,CsvData.get(0).econ,0);
+    }
+
 
 }

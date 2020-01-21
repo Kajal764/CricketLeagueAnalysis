@@ -1,7 +1,4 @@
-import cricketLeague.Batsman;
-import cricketLeague.IPLAnalyzer;
-import cricketLeague.IplAnalyserException;
-import cricketLeague.Sort;
+import cricketLeague.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -36,7 +33,7 @@ public class IPLAnalysisTest {
         IPLAnalyzer iplAnalyzer=new IPLAnalyzer();
         iplAnalyzer.loadRunData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
         List<Batsman> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.AVG_BATTING_RATE);
-        Assert.assertEquals(83.2,CsvData.get(0).Avg,0);
+        Assert.assertEquals(83.2,CsvData.get(0).avg,0);
     }
 
     @Test
@@ -100,7 +97,14 @@ public void whenGivenIpl2019FactsSheetMostWkt_ShouldLoadCorrectRecord() throws I
         } catch (IplAnalyserException e) { }
     }
 
+    @Test
+    public void whenGivenIpl2019FactsSheetMostWkts_ShouldReturnCorrectTopAverage() throws IplAnalyserException {
+        IPLAnalyzer iplAnalyzer=new IPLAnalyzer();
+        iplAnalyzer.loadWktData(FACTS_SHEET_MOST_WKT_CSV_PATH);
+        List<Bowler> CsvData = iplAnalyzer.getTopBowlingRecords(Sort.sortFields.AVG_BATTING_RATE);
 
+        Assert.assertEquals(166.0,CsvData.get(0).avg,0);
+    }
 
 
 }

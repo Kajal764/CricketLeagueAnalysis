@@ -26,7 +26,7 @@ public class Batsman {
     public int hs;
 
     @CsvBindByName(column = "Avg", required = true)
-    public double Avg;
+    public double avg;
 
     @CsvBindByName(column = "BF", required = true)
     public double bf;
@@ -57,7 +57,7 @@ public class Batsman {
                 ", No=" + No +
                 ", runs=" + runs +
                 ", hs='" + hs + '\'' +
-                ", Avg='" + Avg + '\'' +
+                ", avg='" + avg + '\'' +
                 ", bf=" + bf +
                 ", sr=" + sr +
                 ", century=" + century +

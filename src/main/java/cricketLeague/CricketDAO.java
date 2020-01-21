@@ -31,4 +31,17 @@ public class CricketDAO {
 
     }
 
+    @Override
+    public String toString() {
+        return "CricketDAO{" +
+                "player='" + player + '\'' +
+                ", five_w=" + five_w +
+                ", four_w=" + four_w +
+                ", sr=" + sr +
+                ", four_s=" + four_s +
+                ", six_s=" + six_s +
+                ", runs=" + runs +
+                ", avg=" + avg +
+                '}';
+    }
 }

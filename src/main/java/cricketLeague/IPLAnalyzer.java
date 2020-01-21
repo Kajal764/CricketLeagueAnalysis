@@ -26,6 +26,7 @@ public class IPLAnalyzer {
         ArrayList sortedlist= (ArrayList) runsCsvlist.stream()
                 .sorted(comparator)
                 .collect(Collectors.toList());
+        System.out.println(sortedlist);
         return sortedlist;
     }
 

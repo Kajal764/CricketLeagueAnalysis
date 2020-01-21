@@ -91,7 +91,7 @@ public void whenGivenIpl2019FactsSheetMostWkt_ShouldLoadCorrectRecord() throws I
     public void whenGivenWrongExtension_Ipl2019FactsSheetMostWkts_ShouldThrowExtension() throws IplAnalyserException {
         try {
             IPLAnalyzer iplAnalyzer = new IPLAnalyzer();
-            int numOfRecords = iplAnalyzer.loadRunData(WRONG_FACTS_SHEET_MOST_RUNS_CSV_PATH);
+            int numOfRecords = iplAnalyzer.loadRunData(WKTS_FACTS_SHEET_MOST_WKT_CSV_PATH);
             Assert.assertEquals(100,numOfRecords);
 
         } catch (IplAnalyserException e) { }

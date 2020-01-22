@@ -13,10 +13,6 @@ public class IplAnalyserException extends Throwable {
         super(message);
         this.type=type;
     }
-    public IplAnalyserException(String message, String name) {
-
-        this.type=ExceptionType.valueOf(name);
-    }
 
 
 

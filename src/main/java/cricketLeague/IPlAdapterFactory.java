@@ -3,7 +3,7 @@ package cricketLeague;
 import java.util.List;
 
 public class IPlAdapterFactory {
-    public static List<CricketDAO> getLoadingData(IPLAnalyzer.Cricket cricket, String csvFilePath) throws IplAnalyserException {
+    public static <E> List <CricketDAO >getLoadingData(IPLAnalyzer.Cricket cricket, String... csvFilePath) throws IplAnalyserException {
 
         if(cricket.equals(IPLAnalyzer.Cricket.BATSMAN))
             return new BatsmanAdapter().getData(csvFilePath);

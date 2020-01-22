@@ -84,7 +84,6 @@ public class IPLAnalysisTest {
 public void whenGivenIpl2019FactsSheetMostWkt_ShouldLoadCorrectRecord() throws IplAnalyserException {
     IPLAnalyzer iplAnalyzer=new IPLAnalyzer(IPLAnalyzer.Cricket.BOWLER);
     int numOfRecords = iplAnalyzer.loadCricketData(FACTS_SHEET_MOST_WKT_CSV_PATH);
-    System.out.println(numOfRecords);
     Assert.assertEquals(99,numOfRecords);
 }
 

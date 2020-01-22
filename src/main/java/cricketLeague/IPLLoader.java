@@ -15,7 +15,7 @@ import java.util.stream.StreamSupport;
 
 public class IPLLoader {
 
-    public static <E> List<CricketDAO> loadData(String csvFilePath, Class<E> CSVClass) throws IplAnalyserException {
+    public <E> List<CricketDAO> loadData(String csvFilePath, Class<E> CSVClass) throws IplAnalyserException {
         List<CricketDAO> CsvList = new ArrayList<>();
 
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath))) {

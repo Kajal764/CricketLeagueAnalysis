@@ -15,7 +15,8 @@ public class Sort {
         ECONOMY,
         SR_5W_4W,
         MOST_5W_4W,
-        SR
+        WKT_AVG,
+        Wkt, SR
     }
 
 
@@ -46,6 +47,9 @@ public class Sort {
         compareField.put(sortFields.MOST_5W_4W,(data1,data2)->(data1.five_w*5 + data1.four_w*4) - (data2.five_w*5 + data2.four_w*4));
         compareField.put(sortFields.SR,(data1,data2)-> data1.sr < data2.sr?1:-1);
         compareField.put(sortFields.SR_5W_4W,compareField.get(sortFields.MOST_5W_4W).thenComparing(compareField.get(sortFields.SR)).reversed());
+
+        compareField.put(sortFields.Wkt,(w1,w2)->w2.Wicket-w1.Wicket);
+        compareField.put(sortFields.WKT_AVG,compareField.get(sortFields.Wkt).thenComparing(compareField.get(sortFields.AVG_BATTING_RATE)));
 
         Comparator comparator=compareField.get(sortField);
         return comparator;

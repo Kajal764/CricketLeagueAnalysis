@@ -2,6 +2,7 @@ package cricketLeague;
 
 public class CricketDAO {
 
+    public int Wicket;
     public double econ;
     public String player;
     public int five_w;
@@ -30,6 +31,7 @@ public class CricketDAO {
         five_w=bowler.five_wickets;
         runs=bowler.runs;
         econ=bowler.econ;
+        Wicket=bowler.wkts;
 
     }
 

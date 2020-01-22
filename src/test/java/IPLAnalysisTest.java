@@ -130,5 +130,13 @@ public void whenGivenIpl2019FactsSheetMostWkt_ShouldLoadCorrectRecord() throws I
         Assert.assertEquals("Kagiso Rabada",CsvData.get(0).player);
     }
 
+    @Test
+    public void whenGivenIpl2019FactsSheetMostWkts_ShouldReturnCorrectTopAvgWithStrickingRate() throws IplAnalyserException {
+        IPLAnalyzer iplAnalyzer=new IPLAnalyzer(IPLAnalyzer.Cricket.BOWLER);
+        iplAnalyzer.loadCricketData(FACTS_SHEET_MOST_WKT_CSV_PATH);
+        List<CricketDAO> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.AVG_SR);
+       Assert.assertEquals("Krishnappa Gowtham",CsvData.get(0).player);
+    }
+
 
 }

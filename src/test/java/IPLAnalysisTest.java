@@ -121,5 +121,16 @@ public void whenGivenIpl2019FactsSheetMostWkt_ShouldLoadCorrectRecord() throws I
         Assert.assertEquals(13.5,CsvData.get(0).econ,0);
     }
 
+    @Test
+    public void whenGivenIpl2019FactsSheetMostWkts_ShouldReturnCorrectTopStrikingrateWith5WAnd4W() throws IplAnalyserException {
+        IPLAnalyzer iplAnalyzer=new IPLAnalyzer();
+        iplAnalyzer.loadWktData(FACTS_SHEET_MOST_WKT_CSV_PATH);
+        List<CricketDAO> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.SR_5W_4W);
+        System.out.println(CsvData);
+        Assert.assertEquals("Kagiso Rabada",CsvData.get(0).player);
+    }
+
+
+
 
 }

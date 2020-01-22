@@ -16,13 +16,8 @@ public class IPLAnalyzer {
         this.cricket=cricket;
     }
 
-    public int loadCricketData(String csvFilePath)throws IplAnalyserException{
-        if(cricket.equals(Cricket.BATSMAN))
-             Csvlist= new BatsmanAdapter().getData(csvFilePath);
-        else if(cricket.equals(Cricket.BOWLER))
-            Csvlist= new BowlerAdapter().getData(csvFilePath);
-        else
-            throw new IplAnalyserException("INCORRECT DATA",IplAnalyserException.ExceptionType.NO_IPL_FILE_DATA);
+    public int loadCricketData(String csvFilePath) throws IplAnalyserException{
+        Csvlist=IPlAdapterFactory.getLoadingData(cricket,csvFilePath);
         return Csvlist.size();
     }
 

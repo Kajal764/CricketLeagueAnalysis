@@ -16,7 +16,6 @@ public class IPLAnalysisTest {
     public void whenGivenIpl2019FactsSheetMostRuns_ShouldLoadCorrectRecord() throws IplAnalyserException {
         IPLAnalyzer iplAnalyzer=new IPLAnalyzer(IPLAnalyzer.Cricket.BATSMAN);
         int numOfRecords = iplAnalyzer.loadCricketData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
-        System.out.println(numOfRecords);
         Assert.assertEquals(100,numOfRecords);
     }
 
@@ -128,7 +127,6 @@ public void whenGivenIpl2019FactsSheetMostWkt_ShouldLoadCorrectRecord() throws I
         IPLAnalyzer iplAnalyzer=new IPLAnalyzer(IPLAnalyzer.Cricket.BOWLER);
         iplAnalyzer.loadCricketData(FACTS_SHEET_MOST_WKT_CSV_PATH);
         List<CricketDAO> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.SR_5W_4W);
-        System.out.println(CsvData);
         Assert.assertEquals("Kagiso Rabada",CsvData.get(0).player);
     }
 

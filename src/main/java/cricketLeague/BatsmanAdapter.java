@@ -9,4 +9,12 @@ public class BatsmanAdapter extends IPLLoader{
         return cricketDAO;
     }
 
+
+
+
+
+
+
+
+
 }

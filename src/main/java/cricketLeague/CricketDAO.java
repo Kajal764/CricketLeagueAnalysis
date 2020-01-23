@@ -11,10 +11,11 @@ public class CricketDAO {
     public int four_s;
     public int six_s;
     public int runs;
-    public double avg;
+    public double batsmanAvg;
+    public double bowlingAvg;
 
     public CricketDAO(Batsman batsman) {
-        avg=batsman.avg;
+        batsmanAvg=batsman.avg;
         sr=batsman.sr;
         four_s=batsman.four_s;
         six_s=batsman.six_s;
@@ -25,7 +26,7 @@ public class CricketDAO {
 
     public CricketDAO(Bowler bowler) {
         player=bowler.player;
-        avg=bowler.avg;
+        bowlingAvg=bowler.avg;
         sr=bowler.sr;
         four_w=bowler.four_wickets;
         five_w=bowler.five_wickets;
@@ -38,7 +39,8 @@ public class CricketDAO {
     @Override
     public String toString() {
         return "CricketDAO{" +
-                "econ=" + econ +
+                "Wicket=" + Wicket +
+                ", econ=" + econ +
                 ", player='" + player + '\'' +
                 ", five_w=" + five_w +
                 ", four_w=" + four_w +
@@ -46,7 +48,8 @@ public class CricketDAO {
                 ", four_s=" + four_s +
                 ", six_s=" + six_s +
                 ", runs=" + runs +
-                ", avg=" + avg +
+                ", batsmanAvg=" + batsmanAvg +
+                ", bowlingAvg=" + bowlingAvg +
                 '}';
     }
 }

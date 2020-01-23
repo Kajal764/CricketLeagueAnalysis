@@ -10,6 +10,6 @@ public class IPlAdapterFactory {
        else if(cricket.equals(IPLAnalyzer.Cricket.BOWLER))
            return new BowlerAdapter().getData(csvFilePath);
        else
-           throw new IplAnalyserException("INCORRECT DATA",IplAnalyserException.ExceptionType.NO_IPL_FILE_DATA);
+            throw new IplAnalyserException("INCORRECT DATA",IplAnalyserException.ExceptionType.NO_IPL_FILE_DATA);
     }
 }

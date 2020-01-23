@@ -9,7 +9,8 @@ public class IPLAnalyzer {
     List<CricketDAO> Csvlist = new ArrayList<>();
 
     public enum Cricket{
-        BATSMAN,BOWLER
+        BATSMAN,
+        BOWLER,
     }
 
     public IPLAnalyzer(Cricket cricket){

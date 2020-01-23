@@ -11,12 +11,16 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 import java.util.stream.StreamSupport;
 
 public class IPLLoader {
+    List<CricketDAO> CsvList = new ArrayList<>();
+    Map<String, CricketDAO> CsvMap=new TreeMap<>();
 
     public <E> List<CricketDAO> loadData(String csvFilePath, Class<E> CSVClass) throws IplAnalyserException {
-        List<CricketDAO> CsvList = new ArrayList<>();
+
 
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath))) {
             ICSVBuilder icsvBuilder = CSVBuilderFactory.createCSVBuilder();
@@ -44,4 +48,5 @@ public class IPLLoader {
         }
         return null;
     }
-}
+
+    }

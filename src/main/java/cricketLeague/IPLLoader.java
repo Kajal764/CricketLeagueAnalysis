@@ -16,11 +16,10 @@ import java.util.TreeMap;
 import java.util.stream.StreamSupport;
 
 public class IPLLoader {
-    List<CricketDAO> CsvList = new ArrayList<>();
-    Map<String, CricketDAO> CsvMap=new TreeMap<>();
+    
+    Map<String, CricketDAO> CsvMap = new TreeMap<>();
 
-    public <E> List<CricketDAO> loadData(String csvFilePath, Class<E> CSVClass) throws IplAnalyserException {
-
+    public <E> Map<String,CricketDAO> loadData(String csvFilePath ,Class<E> CSVClass) throws IplAnalyserException {
 
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath))) {
             ICSVBuilder icsvBuilder = CSVBuilderFactory.createCSVBuilder();
@@ -29,14 +28,15 @@ public class IPLLoader {
                 {
                     StreamSupport.stream(csvFileList.spliterator(), false)
                             .map(Batsman.class::cast)
-                            .forEach(cricketCSV -> CsvList.add(new CricketDAO((Batsman) cricketCSV)));
+                            .forEach(cricketCSV -> CsvMap.put(cricketCSV.player,new CricketDAO(cricketCSV)));
                 }
-            } else {
+            }
+            if (CSVClass.getName().equals("cricketLeague.Bowler")) {
                 StreamSupport.stream(csvFileList.spliterator(), false)
                         .map(Bowler.class::cast)
-                        .forEach(cricketCSV -> CsvList.add(new CricketDAO((Bowler) cricketCSV)));
+                        .forEach(cricketCSV -> CsvMap.put(cricketCSV.player,new CricketDAO(cricketCSV)));
             }
-            return CsvList;
+            return CsvMap;
 
         } catch (NoSuchFileException e1) {
             throw new IplAnalyserException(e1.getMessage(),
@@ -49,4 +49,5 @@ public class IPLLoader {
         return null;
     }
 
-    }
+}
+

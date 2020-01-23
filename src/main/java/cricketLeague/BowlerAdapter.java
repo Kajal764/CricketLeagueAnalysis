@@ -1,11 +1,12 @@
 package cricketLeague;
 
 import java.util.List;
+import java.util.Map;
 
 public class BowlerAdapter extends IPLLoader {
 
-    public List getData(String... csvFilePath) throws IplAnalyserException {
-        List<CricketDAO> cricketDAO = super.loadData(csvFilePath[0], Bowler.class);
+    public Map<String,CricketDAO> getData(Class<Bowler> bowlerClass, String... csvFilePath) throws IplAnalyserException {
+        Map<String,CricketDAO> cricketDAO = super.loadData(csvFilePath[0], Bowler.class);
         return cricketDAO;
     }
 }

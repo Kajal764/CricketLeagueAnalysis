@@ -25,7 +25,7 @@ public class Sort {
     {
     HashMap <sortFields,Comparator<CricketDAO>> compareField=new HashMap<>();
 
-   compareField.put(sortFields.AVG_BATTING_RATE,(data1,data2)-> (int) (data2.batsmanAvg-data1.batsmanAvg));
+        compareField.put(sortFields.AVG_BATTING_RATE,(data1,data2)-> (int) (data2.batsmanAvg-data1.batsmanAvg));
         compareField.put(sortFields.AVG_BOWLING_RATE,(data1,data2)-> (int) (data2.bowlingAvg-data1.bowlingAvg));
         compareField.put(sortFields.STRIKING_RATE,(data1,data2)-> (int) (data2.sr-data1.sr));
 
@@ -56,8 +56,6 @@ public class Sort {
         compareField.put(sortFields.Wkt,(w1,w2)->w2.Wicket-w1.Wicket);
         compareField.put(sortFields.WKT_AVG,compareField.get(sortFields.Wkt).thenComparing(compareField.get(sortFields.AVG_BATTING_RATE)));
 
-
-
         compareField.put(sortFields.AVG_BATTING_RATE,(data1,data2)-> (int) (data2.batsmanAvg-data1.batsmanAvg));
         compareField.put(sortFields.Avg_Rate,(data1,data2)-> (int) (data2.bowlingAvg-data1.bowlingAvg));
         compareField.put(sortFields.Combine_AVG,compareField.get(sortFields.AVG_BATTING_RATE).thenComparing(compareField.get(sortFields.Avg_Rate)));
@@ -66,6 +64,5 @@ public class Sort {
         return comparator;
 
     }
-
 
 }

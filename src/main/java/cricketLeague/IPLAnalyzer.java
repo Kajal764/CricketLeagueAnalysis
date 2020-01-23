@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class IPLAnalyzer {
 
     private  Cricket cricket;
-    List<CricketDAO> Csvlist = new ArrayList<>();
+    Map<String,CricketDAO> Csvlist = new HashMap<>();
 
     public enum Cricket{
         BATSMAN,
@@ -24,7 +24,7 @@ public class IPLAnalyzer {
 
     public List<CricketDAO> getTopRecords(Sort.sortFields sortFields) {
         Comparator<CricketDAO> comparator=new Sort().getRunField(sortFields);
-        ArrayList sortedlist= (ArrayList) Csvlist.stream()
+        ArrayList sortedlist= (ArrayList) Csvlist.values().stream()
                 .sorted(comparator)
                 .collect(Collectors.toList());
         return sortedlist;

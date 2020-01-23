@@ -36,6 +36,15 @@ public class CricketDAO {
 
     }
 
+    public Object getIPLDTO(IPLAnalyzer.Cricket cricket)
+    {
+        if(cricket.equals(IPLAnalyzer.Cricket.BATSMAN))
+            return new Batsman(avg,sr,four_s,six_s,runs,player);
+        return new Bowler(player,bowl_avg,sr,four_w,five_w,runs,econ,Wicket);
+
+    }
+
+
     @Override
     public String toString() {
         return "CricketDAO{" +

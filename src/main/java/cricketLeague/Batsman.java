@@ -46,6 +46,17 @@ public class Batsman {
     @CsvBindByName(column = "6s", required = true)
     public int six_s;
 
+    public Batsman(double avg, double sr, int four_s, int six_s, int runs, String player) {
+        this.avg=avg;
+        this.sr=sr;
+        this.four_s=four_s;
+        this.six_s=six_s;
+        this.runs=runs;
+        this.player=player;
+    }
+
+    public Batsman() {
+    }
 
     @Override
     public String toString() {

@@ -23,10 +23,12 @@ public class IPLAnalyzer {
         return Csvlist.size();
     }
 
+
     public List getTopRecords(Sort.sortFields sortFields) {
         Comparator<CricketDAO> comparator=new Sort().getRunField(sortFields);
         List sortedlist= Csvlist.values().stream()
                 .sorted(comparator)
+                .map(cricketDTO -> cricketDTO.getIPLDTO(cricket))
                 .collect(Collectors.toList());
         return sortedlist;
     }

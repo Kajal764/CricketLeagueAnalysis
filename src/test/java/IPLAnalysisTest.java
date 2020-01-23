@@ -32,8 +32,8 @@ public class IPLAnalysisTest {
     public void whenGivenIpl2019FactsSheetMostRuns_ShouldReturnCorrectTopAverage() throws IplAnalyserException {
         IPLAnalyzer iplAnalyzer=new IPLAnalyzer(IPLAnalyzer.Cricket.BATSMAN);
         iplAnalyzer.loadCricketData(FACTS_SHEET_MOST_RUNS_CSV_PATH);
-        List<CricketDAO> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.AVG_BATTING_RATE);
-        Assert.assertEquals(83.2,CsvData.get(0).batsmanAvg,0);
+        List<CricketDAO> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.AVG_BATSMAN);
+        Assert.assertEquals(83.2,CsvData.get(0).avg,0);
     }
 
     @Test
@@ -99,8 +99,8 @@ public class IPLAnalysisTest {
     public void whenGivenIpl2019FactsSheetMostWkts_ShouldReturnCorrectTopAverage() throws IplAnalyserException {
         IPLAnalyzer iplAnalyzer=new IPLAnalyzer(IPLAnalyzer.Cricket.BOWLER);
         iplAnalyzer.loadCricketData(FACTS_SHEET_MOST_WKT_CSV_PATH);
-        List<CricketDAO> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.AVG_BOWLING_RATE);
-        Assert.assertEquals(166.0,CsvData.get(0).bowlingAvg,0);
+        List<CricketDAO> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.AVG_BOWLING);
+        Assert.assertEquals(166.0,CsvData.get(0).bowl_avg,0);
     }
 
     @Test
@@ -144,6 +144,14 @@ public class IPLAnalysisTest {
         Assert.assertEquals("Imran Tahir",CsvData.get(0).player);
     }
 
+    @Test
+    public void whenGivenIpl2019FactsSheet_ShouldReturnCorrectTopAvgOfBatsmanAndBowler() throws IplAnalyserException {
+        IPLAnalyzer iplAnalyzer=new IPLAnalyzer(IPLAnalyzer.Cricket.BATSMAN_BOWLER);
+        iplAnalyzer.loadCricketData(FACTS_SHEET_MOST_RUNS_CSV_PATH, FACTS_SHEET_MOST_WKT_CSV_PATH);
+        List<CricketDAO> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.Combine_AVG);
+        Assert.assertEquals("MS Dhoni",CsvData.get(0).player);
 
+
+    }
 
 }

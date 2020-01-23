@@ -11,11 +11,11 @@ public class CricketDAO {
     public int four_s;
     public int six_s;
     public int runs;
-    public double batsmanAvg;
-    public double bowlingAvg;
+    public double avg;
+    public double bowl_avg;
 
     public CricketDAO(Batsman batsman) {
-        batsmanAvg=batsman.avg;
+        avg =batsman.avg;
         sr=batsman.sr;
         four_s=batsman.four_s;
         six_s=batsman.six_s;
@@ -26,7 +26,7 @@ public class CricketDAO {
 
     public CricketDAO(Bowler bowler) {
         player=bowler.player;
-        bowlingAvg=bowler.avg;
+        bowl_avg =bowler.bowl_avg;
         sr=bowler.sr;
         four_w=bowler.four_wickets;
         five_w=bowler.five_wickets;
@@ -48,8 +48,8 @@ public class CricketDAO {
                 ", four_s=" + four_s +
                 ", six_s=" + six_s +
                 ", runs=" + runs +
-                ", batsmanAvg=" + batsmanAvg +
-                ", bowlingAvg=" + bowlingAvg +
+                ", avg=" + avg +
+                ", bowl_avg=" + bowl_avg +
                 '}';
     }
 }

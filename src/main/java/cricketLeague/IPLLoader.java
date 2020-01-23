@@ -17,11 +17,11 @@ import java.util.stream.StreamSupport;
 
 public class IPLLoader {
     
-    Map<String, CricketDAO> CsvMap = new TreeMap<>();
 
-    public <E> Map<String,CricketDAO> loadData(String csvFilePath ,Class<E> CSVClass) throws IplAnalyserException {
 
-        try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath))) {
+    public <E> Map<String,CricketDAO> loadData(Class<E> CSVClass,String... csvFilePath ) throws IplAnalyserException {
+        Map<String, CricketDAO> CsvMap = new TreeMap<>();
+        try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath[0]))) {
             ICSVBuilder icsvBuilder = CSVBuilderFactory.createCSVBuilder();
             List<E> csvFileList = icsvBuilder.getCSVFileList(reader, CSVClass);
             if (CSVClass.getName().equals("cricketLeague.Batsman")) {

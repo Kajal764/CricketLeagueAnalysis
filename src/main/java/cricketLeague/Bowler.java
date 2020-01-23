@@ -29,7 +29,7 @@ public class Bowler {
     public int bbi;
 
     @CsvBindByName(column = "Avg", required = true)
-    public double avg;
+    public double bowl_avg;
 
     @CsvBindByName(column = "Econ", required = true)
     public double econ;
@@ -55,7 +55,7 @@ public class Bowler {
                 ", runs=" + runs +
                 ", wkts=" + wkts +
                 ", bbi=" + bbi +
-                ", avg=" + avg +
+                ", bowl_avg=" + bowl_avg +
                 ", econ=" + econ +
                 ", sr=" + sr +
                 ", four_wickets=" + four_wickets +

@@ -10,7 +10,10 @@ public class IPlAdapterFactory {
             return new BatsmanAdapter().getData(Batsman.class,csvFilePath);
         else if(cricket.equals(IPLAnalyzer.Cricket.BOWLER))
            return new BowlerAdapter().getData(Bowler.class,csvFilePath);
-       else {
+        else if(cricket.equals(IPLAnalyzer.Cricket.BATSMAN_BOWLER))
+            return new CricketAdapter().getData(csvFilePath);
+
+        else {
             throw new IplAnalyserException("INCORRECT DATA",IplAnalyserException.ExceptionType.NO_IPL_FILE_DATA);
         }
     }

@@ -6,11 +6,12 @@ import java.util.stream.Collectors;
 public class IPLAnalyzer {
 
     private  Cricket cricket;
-    Map<String,CricketDAO> Csvlist = new HashMap<>();
+    Map<String,CricketDAO> Csvlist = new TreeMap<>();
 
     public enum Cricket{
         BATSMAN,
         BOWLER,
+        BATSMAN_BOWLER
     }
 
     public IPLAnalyzer(Cricket cricket){
@@ -22,9 +23,9 @@ public class IPLAnalyzer {
         return Csvlist.size();
     }
 
-    public List<CricketDAO> getTopRecords(Sort.sortFields sortFields) {
+    public List getTopRecords(Sort.sortFields sortFields) {
         Comparator<CricketDAO> comparator=new Sort().getRunField(sortFields);
-        ArrayList sortedlist= (ArrayList) Csvlist.values().stream()
+        List sortedlist= Csvlist.values().stream()
                 .sorted(comparator)
                 .collect(Collectors.toList());
         return sortedlist;

@@ -150,8 +150,18 @@ public class IPLAnalysisTest {
         iplAnalyzer.loadCricketData(FACTS_SHEET_MOST_RUNS_CSV_PATH, FACTS_SHEET_MOST_WKT_CSV_PATH);
         List<Bowler> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.Combine_AVG);
         Assert.assertEquals("MS Dhoni",CsvData.get(0).player);
-
-
     }
+
+    @Test
+    public void whenGivenIpl2019FactsSheet_ShouldReturnCorrectTopAllRounderPlayer() throws IplAnalyserException {
+        IPLAnalyzer iplAnalyzer=new IPLAnalyzer(IPLAnalyzer.Cricket.BATSMAN_BOWLER);
+        iplAnalyzer.loadCricketData(FACTS_SHEET_MOST_RUNS_CSV_PATH, FACTS_SHEET_MOST_WKT_CSV_PATH);
+        List<Bowler> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.All_ROUNDER);
+        CsvData.forEach(System.out::println);
+        Assert.assertEquals("Andre Russell",CsvData.get(0).player);
+    }
+
+
+
 
 }

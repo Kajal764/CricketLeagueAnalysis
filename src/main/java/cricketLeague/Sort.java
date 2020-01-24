@@ -19,7 +19,7 @@ public class Sort {
         Wkt, Combine_AVG, SR,
         AVG_BOWLING_RATE, AVG_SR_BOWLING, AVG_RATE,
         AVG,
-        AVG_BATSMAN, AVG_BOWLING, Avg_Rate
+        AVG_BATSMAN, AVG_BOWLING, All_ROUNDER, WKT
     }
 
 
@@ -62,6 +62,13 @@ public class Sort {
 
         compareField.put(sortField.Combine_AVG,compareField.get(sortFields.AVG_BATSMAN)
                 .thenComparing(compareField.get(sortFields.AVG_BOWLING)));
+
+        Comparator<CricketDAO> comparators=Comparator.comparing(CricketDAO->{
+            if(CricketDAO.Wicket>7 && CricketDAO.runs>150)
+                return CricketDAO.runs+CricketDAO.Wicket*20;
+            return 0;
+        });
+        compareField.put(sortFields.All_ROUNDER,comparators.reversed());
 
         Comparator comparator=compareField.get(sortField);
         return comparator;

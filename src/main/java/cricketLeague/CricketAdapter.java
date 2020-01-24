@@ -9,7 +9,14 @@ public class CricketAdapter extends IPLLoader {
 
         bowlerData.values().stream()
                 .filter(Runs->batsmanData.get(Runs.player)!=null)
-                .forEach(Runs->batsmanData.get(Runs.player).bowl_avg =Runs.bowl_avg);
+                .forEach(Runs->batsmanData.get(Runs.player).
+                        bowl_avg =Runs.bowl_avg);
+
+        bowlerData.values().stream()
+                .filter(Runs -> batsmanData.get(Runs.player)!=null)
+                .forEach(Runs -> batsmanData.get(Runs.player)
+                        .Wicket = Runs.Wicket);
+
 
         return batsmanData;
     }

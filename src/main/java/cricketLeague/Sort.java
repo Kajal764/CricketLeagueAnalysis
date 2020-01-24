@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class Sort {
 
     public enum sortFields{
-        AVG_BATTING_RATE,
+
         STRIKING_RATE,
         S4_S6,
         S4_S6_SR,
@@ -17,9 +17,8 @@ public class Sort {
         MOST_5W_4W,
         WKT_AVG,
         Wkt, Combine_AVG, SR,
-        AVG_BOWLING_RATE, AVG_SR_BOWLING, AVG_RATE,
-        AVG,
-        AVG_BATSMAN, AVG_BOWLING, All_ROUNDER, WKT
+        AVG_SR_BOWLING,
+        AVG_BATSMAN, AVG_BOWLING, All_ROUNDER,
     }
 
 

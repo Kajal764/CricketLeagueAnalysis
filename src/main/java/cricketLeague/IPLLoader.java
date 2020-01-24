@@ -14,9 +14,9 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.stream.StreamSupport;
 
-public class IPLLoader {
-    
+public abstract  class IPLLoader {
 
+    public abstract Map<String, CricketDAO> loadData(String[] csvFilePath) throws IplAnalyserException;
 
     public <E> Map<String,CricketDAO> loadData(Class<E> CSVClass,String... csvFilePath ) throws IplAnalyserException {
         Map<String, CricketDAO> CsvMap = new TreeMap<>();

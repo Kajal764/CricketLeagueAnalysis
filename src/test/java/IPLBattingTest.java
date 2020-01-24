@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-public class IPLAnalysisTest {
+public class IPLBattingTest {
 
     private static final String FACTS_SHEET_MOST_RUNS_CSV_PATH="/home/admin1/Desktop/CricketLeague/src/test/resources/IPL2019FactssheetMostRuns1.csv";
     private static final String WRONG_FACTS_SHEET_MOST_RUNS_CSV_PATH="/home/admin1/Desktop/CricketLeague/src/test/resources/IPL2019FactssheetMostRuns1";
@@ -81,6 +81,7 @@ public class IPLAnalysisTest {
         IPLAnalyzer iplAnalyzer=new IPLAnalyzer(IPLAnalyzer.Cricket.BATSMAN_BOWLER);
         iplAnalyzer.loadCricketData(FACTS_SHEET_MOST_RUNS_CSV_PATH, FACTS_SHEET_MOST_WKT_CSV_PATH);
         List<Bowler> CsvData = iplAnalyzer.getTopRecords(Sort.sortFields.Combine_AVG);
+        CsvData.forEach(System.out::println);
         Assert.assertEquals("MS Dhoni",CsvData.get(0).player);
     }
 

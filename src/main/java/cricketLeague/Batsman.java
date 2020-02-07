@@ -55,8 +55,8 @@ public class Batsman {
         this.player=player;
     }
 
-    public Batsman() {
-    }
+//    public Batsman() {
+//    }
 
     @Override
     public String toString() {
@@ -77,5 +77,4 @@ public class Batsman {
                 ", six_s=" + six_s +
                 '}';
     }
-
 }

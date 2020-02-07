@@ -3,11 +3,15 @@ package cricketLeague;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toCollection;
+
 public class IPLAnalyzer {
 
+
     private  Cricket cricket;
-    Map<String,CricketDAO> Csvlist = new TreeMap<>();
+    Map<String,CricketDAO> Csvlist = new HashMap<>();
     public MockClass factoryMock = new MockClass();
+    public Sort sortMock=new Sort();
 
     public IPLAnalyzer(Cricket cricket){
         this.cricket=cricket;
@@ -16,6 +20,12 @@ public class IPLAnalyzer {
     public IPLAnalyzer(Cricket cricket, MockClass factoryMock) {
         this.cricket=cricket;
         this.factoryMock=factoryMock;
+    }
+
+    public IPLAnalyzer(Cricket batsman, MockClass factoryMock, Sort sort) {
+        this.cricket=batsman;
+        this.factoryMock=factoryMock;
+        this.sortMock=sort;
     }
 
     public enum Cricket{
@@ -30,11 +40,11 @@ public class IPLAnalyzer {
     }
 
     public List getTopRecords(Sort.sortFields sortFields) {
-        Comparator<CricketDAO> comparator=new Sort().getRunField(sortFields);
+        Comparator<CricketDAO> comparator= sortMock.getRunField(sortFields);
         List sortedlist= Csvlist.values().stream()
                 .sorted(comparator)
                 .map(cricketDTO -> cricketDTO.getIPLDTO(cricket))
-                .collect(Collectors.toList());
+                .collect(toCollection(ArrayList::new));
         return sortedlist;
     }
 }

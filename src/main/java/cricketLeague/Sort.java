@@ -24,7 +24,7 @@ public class Sort {
 
     public Comparator getRunField(sortFields sortField)
     {
-    HashMap <sortFields,Comparator<CricketDAO>> compareField=new HashMap<>();
+        HashMap <sortFields,Comparator<CricketDAO>> compareField=new HashMap<>();
 
         compareField.put(sortFields.AVG_BATSMAN,(data1,data2)-> (int) (data2.avg -data1.avg));
 

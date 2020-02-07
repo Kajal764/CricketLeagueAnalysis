@@ -46,7 +46,6 @@ public class CricketDAO {
         if(cricket.equals(IPLAnalyzer.Cricket.BATSMAN))
             return new Batsman(avg,sr,four_s,six_s,runs,player);
         return new Bowler(player,bowl_avg,sr,four_w,five_w,runs,econ,Wicket);
-
     }
 
 

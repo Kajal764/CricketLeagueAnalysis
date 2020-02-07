@@ -14,6 +14,9 @@ public class CricketDAO {
     public double avg;
     public double bowl_avg;
 
+    public CricketDAO() {
+    }
+
     public CricketDAO(Batsman batsman) {
         avg =batsman.avg;
         sr=batsman.sr;
@@ -23,6 +26,8 @@ public class CricketDAO {
         player=batsman.player;
 
     }
+
+
 
     public CricketDAO(Bowler bowler) {
         player=bowler.player;

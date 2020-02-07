@@ -7,6 +7,16 @@ public class IPLAnalyzer {
 
     private  Cricket cricket;
     Map<String,CricketDAO> Csvlist = new TreeMap<>();
+    public MockClass factoryMock = new MockClass();
+
+    public IPLAnalyzer(Cricket cricket){
+        this.cricket=cricket;
+    }
+
+    public IPLAnalyzer(Cricket cricket, MockClass factoryMock) {
+        this.cricket=cricket;
+        this.factoryMock=factoryMock;
+    }
 
     public enum Cricket{
         BATSMAN,
@@ -14,15 +24,10 @@ public class IPLAnalyzer {
         BATSMAN_BOWLER
     }
 
-    public IPLAnalyzer(Cricket cricket){
-        this.cricket=cricket;
-    }
-
     public int loadCricketData(String... csvFilePath ) throws IplAnalyserException{
-        Csvlist=IPlAdapterFactory.getLoadingData(cricket,csvFilePath);
+        Csvlist=factoryMock.getLoadingData(cricket,csvFilePath);
         return Csvlist.size();
     }
-
 
     public List getTopRecords(Sort.sortFields sortFields) {
         Comparator<CricketDAO> comparator=new Sort().getRunField(sortFields);

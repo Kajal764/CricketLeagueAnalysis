@@ -1,8 +1,8 @@
 package cricketLeague;
 
-import com.brideglabz.CSVBuilderException;
-import com.brideglabz.CSVBuilderFactory;
-import com.brideglabz.ICSVBuilder;
+import csvbuilder.CSVBuilderException;
+import csvbuilder.CSVBuilderFactory;
+import csvbuilder.ICSVBuilder;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -16,13 +16,13 @@ import java.util.stream.StreamSupport;
 
 public abstract  class IPLLoader {
 
-    public abstract Map<String, CricketDAO> loadData(String[] csvFilePath) throws IplAnalyserException;
+    public abstract Map<String, CricketDAO> loadData(String... csvFilePath) throws IplAnalyserException;
 
     public <E> Map<String,CricketDAO> loadData(Class<E> CSVClass,String... csvFilePath ) throws IplAnalyserException {
         Map<String, CricketDAO> CsvMap = new TreeMap<>();
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath[0]))) {
             ICSVBuilder icsvBuilder = CSVBuilderFactory.createCSVBuilder();
-            List<E> csvFileList = icsvBuilder.getCSVFileList(reader, CSVClass);
+            List<E> csvFileList = icsvBuilder.getListCsvFile(reader, CSVClass);
             if (CSVClass.getName().equals("cricketLeague.Batsman")) {
                 {
                     StreamSupport.stream(csvFileList.spliterator(), false)

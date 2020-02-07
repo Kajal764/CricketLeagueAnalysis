@@ -5,7 +5,7 @@ import java.util.Map;
 public class CricketAdapter extends IPLLoader {
 
     @Override
-    public Map<String, CricketDAO> loadData(String[] csvFilePath) throws IplAnalyserException {
+    public Map<String, CricketDAO> loadData(String... csvFilePath) throws IplAnalyserException {
         Map<String,CricketDAO> batsmanData= super.loadData(Batsman.class,csvFilePath[0]);
         Map<String,CricketDAO> bowlerData = super.loadData( Bowler.class,csvFilePath[1]);
 

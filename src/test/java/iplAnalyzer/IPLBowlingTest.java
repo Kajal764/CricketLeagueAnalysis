@@ -1,7 +1,6 @@
-import cricketLeague.Bowler;
-import cricketLeague.IPLAnalyzer;
-import cricketLeague.IplAnalyserException;
-import cricketLeague.Sort;
+package iplAnalyzer;
+
+import cricketLeague.*;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -9,8 +8,9 @@ import java.util.List;
 
 public class IPLBowlingTest {
 
-    private static final String FACTS_SHEET_MOST_WKT_CSV_PATH="/home/admin1/Desktop/CricketLeague/src/test/resources/IPL2019FactssheetMostWkts.csv";
+    private static final String FACTS_SHEET_MOST_WKT_CSV_PATH="/home/admin244/Desktop/CricketLeagueAnalysis/src/test/resources/IPL2019FactssheetMostWkts.csv";
     private static final String WKTS_FACTS_SHEET_MOST_WKT_CSV_PATH="/home/admin1/Desktop/CricketLeague/src/test/resources/IPL2019FactssheetMostWkts";
+    private IPlAdapterFactory factoryMock;
 
 
     @Test
